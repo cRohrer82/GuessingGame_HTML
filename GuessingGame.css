@@ -1,0 +1,32 @@
+/* Christopher Rohrer */
+
+aside {
+	background: white;
+	border: solid;
+	float: right;
+	min-height: 10vh;
+	min-width: 20%;
+}
+
+body {
+	background: radial-gradient(ellipse at center, red 0%, orange 16.67%, yellow 33.33%, green 50%, blue 66.67%, indigo 83.33%, violet 100%) no-repeat;
+	background: -moz-radial-gradient(center, red 0%, orange 16.67%, yellow 33.33%, green 50%, blue 66.67%, indigo 83.33%, violet 100%)no-repeat;
+	background: -webkit-radial-gradient(center, red 0%, orange 16.67%, yellow 33.33%, green 50%, blue 66.67%, indigo 83.33%, violet 100%)no-repeat;
+	color: white;
+	height: 100vh;
+}
+
+/*-------------*/
+/*---Classes---*/
+/*-------------*/
+
+
+
+/*-------------*/
+/*-----Ids-----*/
+/*-------------*/
+
+#tryHist {
+	min-width: 10%;
+	min-height: 100px;
+}

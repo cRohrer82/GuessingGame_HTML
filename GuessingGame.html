@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+
+	<html lang="en">
+	
+		<head>
+		
+			<meta name="author" content="Christopher Rohrer" />
+			<meta name="keywords" content="guessing, game" />
+			<meta name="description" content="a guessing game" />
+			<meta charset="utf-8" />
+			
+			<style type="text/css">
+				label {
+					margin-left: 17.5%;
+				}
+				
+				nav {
+					background: clear;
+					border: double;
+					float: left;
+					font-weight: bold;
+					max-width: 20%;
+					min-width: 20%;
+				}
+				
+				nav div {
+					margin-bottom: .75vh;
+					margin-top: .75vh;
+					text-align: center;
+				}
+
+				nav hr {
+					background-color: #dddddd;
+					height: .25vh;
+					margin-top: 1px;
+					max-height: .25vh;
+					min-height: .25vh;
+					width: 90%;
+				}
+				
+				body {
+					background: radial-gradient(ellipse at center, #339999 0%, #aec6cf 33.33%, #339999 66.67%, #aec6cf 83.33%, #339999 100%)no-repeat;
+					background: -moz-radial-gradient(center, #339999 0%, #aec6cf 33.33%, #339999 66.67%, #aec6cf 83.33%, #339999 100%)no-repeat;
+					background: -webkit-radial-gradient(center, #339999 0%, #aec6cf 33.33%, #339999 66.67%, #aec6cf 83.33%, #339999 100%)no-repeat;
+					color: #dddddd;
+					height: 100vh;
+				}
+				
+				h1 {
+					text-align: center;
+				}
+				
+				p {
+					text-align: center;
+				}
+
+				/*-------------*/
+				/*---Classes---*/
+				/*-------------*/
+
+				/*-------------*/
+				/*-----Ids-----*/
+				/*-------------*/
+			</style>
+			
+			<title>Guessing Game!</title>		
+		</head>
+		
+		<body onload="randNum()">		
+			<script type="text/javascript">
+			<!--
+				var goalNum = 0;
+				var tryNum = 0;
+				
+				function randNum() {
+					document.getElementById("userGuess").value = "";
+					document.getElementById("userGuess").focus();
+					goalNum = Math.random();
+					goalNum *= 100;
+					goalNum += 1;
+					goalNum = parseInt(goalNum);
+					//alert(goalNum);
+				}
+				
+				function guessClick() {
+					var userGuess = document.getElementById("userGuess").value;
+					
+					if (userGuess <= 0 || userGuess > 100) {alert("Please enter a number from 1 to 100!");return true;}
+					
+					response = 0;
+					
+					if (userGuess < goalNum) {
+						response = 1;
+					}
+					
+					if (userGuess > goalNum) {
+						response = -1;
+					}
+					
+					switch (response) {
+						case 1:
+							alert("It's greater than that... try again");
+							incorrectGuess(userGuess,"low");
+							break;
+						case -1:
+							alert("It's less than that... try again");
+							incorrectGuess(userGuess,"high");
+							break;
+						default:
+							alert("That's it!!");
+							correctGuess(userGuess);
+					}
+				}
+				
+				function incorrectGuess(num,temp) {
+					tryNum ++;					
+					newCode = "<div>#" + tryNum + ": " + num + " was too " + temp + "</div><hr />";
+					document.getElementsByTagName("nav")[0].innerHTML += newCode;
+					document.getElementById("userGuess").value = "";
+					document.getElementById("userGuess").focus();
+				}
+				
+				function correctGuess(num) {
+					tryNum ++;
+					newCode = "<div>&#127881 It was " + num + "! &#127881</div>";
+					newCode += "<div>You got it on guess #" + tryNum + "</div>";
+					if (tryNum > 7) {
+						newCode += "<div>&#128078 It shouldn't take you more than 7 guesses &#128078</div>";
+					}
+					document.getElementsByTagName("nav")[0].innerHTML += newCode;
+				}
+			//-->
+			</script>
+		
+			<h1>Guessing Game!</h1>
+			
+			<hr />
+			
+			<main>
+				<p>
+					In this game, you pick numbers that are between one and one-hundred. Try to guess the
+					secret number!
+				</p>
+			</main>
+			
+			<aside>
+			
+			</aside>
+			
+			<section>
+				<label>Take a guess!: <input type="text" id="userGuess" /></label>
+				
+				<button type="button" id="guessButton" onclick="guessClick();">Guess!</button>
+				
+				<nav>
+					<div>Guess History</div><hr />			
+				</nav>
+			</section>
+		</body>
+	</html>
